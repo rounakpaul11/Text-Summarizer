@@ -3,7 +3,7 @@ import streamlit as st
 import nltk
 import os
 import random
-from transformers import BartForConditionalGeneration, BartTokenizer, GPT2Tokenizer, GPT2LMHeadModel, TransformerSummarizer
+from transformers import BartForConditionalGeneration, BartTokenizer, GPT2Tokenizer, GPT2LMHeadModel, pipeline
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 import language_tool_python
@@ -81,8 +81,10 @@ def bert_summarize(text):
 
 # Function to summarize text using GPT-2
 def gpt2_summarize(text):
-    full = ''.join(GPT2_model(text, min_length=60))
-    return full
+    summarizer = pipeline("summarization", model="gpt2-medium", tokenizer="gpt2-medium")
+    summary = summarizer(text, min_length=60, max_length=200)[0]['summary_text']
+    return summary
+
 
 # Function to find a random synonym of a word from WordNet
 def find_random_synonym(word):
