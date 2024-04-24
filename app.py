@@ -115,7 +115,7 @@ def main():
         st.subheader("Summary:")
         st.write(summary_text)
     st.write("Made by Rounak Paul(21bce1566) & Tushar Panwar(21bce1074)")
-    st.write("NLP PROJECT,VIT CHENNAI")
+    st.write("NLP PROJECT, VIT CHENNAI")
 
     # Sidebar for Synonym Finder
     st.sidebar.title("Synonym Finder")
